@@ -68,8 +68,16 @@ app.use(function(req, res, next) {
 
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
-const port = process.env.PORT || 3000
-app.listen(port,()=>{
+
+const PORT = process.env.PORT || 3000
+const dbConfig ={
+  host: process.env.DB_HOST || "localhost",
+  port: process.env.DB_PORT || "3306",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "",
+  password: process.env.DB_NAME || "snowboard"
+}
+app.listen(PORT,()=>{
   console.log('El servidor 3000 se levanto 123🎈')
 })
 
