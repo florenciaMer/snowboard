@@ -1,0 +1,142 @@
+<%- include('./partials/head.ejs') %>
+<body>
+ <%- include('./partials/header.ejs') %>
+
+<script type="text/javascript">
+        $(document).ready(function() {
+            $(".dropdown img.flag").addClass("flagvisibility");
+
+            $(".dropdown dt a").click(function() {
+                $(".dropdown dd ul").toggle();
+            });
+                        
+            $(".dropdown dd ul li a").click(function() {
+                var text = $(this).html();
+                $(".dropdown dt a span").html(text);
+                $(".dropdown dd ul").hide();
+                $("#result").html("Selected value is: " + getSelectedValue("sample"));
+            });
+                        
+            function getSelectedValue(id) {
+                return $("#" + id).find("dt a span.value").html();
+            }
+
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdown"))
+                    $(".dropdown dd ul").hide();
+            });
+
+
+            $("#flagSwitcher").click(function() {
+                $(".dropdown img.flag").toggleClass("flagvisibility");
+            });
+        });
+     </script>
+ </head>
+<body>
+	<%  if(locals.errors) { %>
+		<%  for(let oneError in errors) { %>
+		 
+	  <% } %>
+	<% } %>  
+	
+    
+	
+     <div class="main">
+      <div class="shop_top">
+	     <div class="container">
+			<form action="/users/createAcount" method="post">
+
+				<div class="register-top-grid">
+						<h3>PERSONAL INFORMATION</h3>
+						<div class="w-100">
+							<span>First Name<label>*</label></span>
+							<input type="text"
+								name="firstName"  
+								class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+								value="<%= locals.oldData ? oldData.firstName : null %>"
+						>        
+						
+							<% if(locals.errors && errors.firstName){ %>
+								<div class="text-danger"><%= errors.firstName.msg %></div>
+							<% } %>
+						</div>
+						<div class="w-100">
+							<span>Last Name<label>*</label></span>
+							<input type="text"
+								name="lastName"  
+								class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+								value="<%= locals.oldData ? oldData.lastName : null %>"
+						>        
+						
+							<% if(locals.errors && errors.lastName){ %>
+								<div class="text-danger"><%= errors.lastName.msg %></div>
+							<% } %>
+						</div>
+						<div class="w-100">
+							<span>Email Address<label>*</label></span>
+							<input type="text"
+								name="email"  
+								class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+								value="<%= locals.oldData ? oldData.email : null %>"
+						>        
+						
+							<% if(locals.errors && errors.email){ %>
+								<div class="text-danger"><%= errors.email.msg %></div>
+							<% } %>
+							<% if(locals.email){ %>
+								<div class="text-danger"><%= locals.email %></div>
+							<% } %>
+						</div>
+				</div>
+			</div>
+
+			<div class="register-top-grid password">
+						<div>
+							<span>Password<label>*</label></span>
+							<input type="password"
+								name="password"  
+								class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+								value="<%= locals.oldData ? oldData.password : null %>"
+							>       
+						
+							<% if(locals.errors && errors.password){ %>
+								<div class="text-danger"><%= errors.password.msg %></div>
+							<% } %>
+						</div>
+						<div>
+							<span>Confirm Password<label>*</label></span>
+							<input type="password"
+								name="confirmPassword"  
+								class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+								value="<%= locals.oldData ? oldData.confirmPassword : null %>"
+						>        
+
+						
+							<% if(locals.errors && errors.confirmPassword){ %>
+								<div class="text-danger"><%= errors.confirmPassword.msg %></div>
+							<% } %>
+
+							<% if(locals.errors){ %>
+								<div class="text-danger"><%= locals.errors %></div>
+							<% } %>
+
+						</div>
+						<div class="clear"> </div>
+				
+				<div class="clear"> </div>
+				<input type="submit" value="submit">
+				</div>
+
+			</form>
+		</div>
+		</div>
+	</div>  
+</body>
+<script src="/javascripts/script.js"></script>
+
+  <%- include('./partials/footer.ejs') %>
+
+
+</html>

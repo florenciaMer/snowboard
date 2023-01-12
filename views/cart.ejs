@@ -1,0 +1,82 @@
+<%- include('./partials/head.ejs') %>
+<body>
+ <%- include('./partials/header.ejs') %>
+
+   
+<h1><%= title %></h1>
+
+<main class="d-flex flex-row justify-content-center">
+    <section class="h-100" style="background-color: #eee;">
+        <div class="container h-100 py-5">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10">
+      
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                
+               
+              </div>
+              <table class="table">
+                <thead class="none">
+                  <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col" class="px-5">Quantity</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="cartRows">
+                
+                </tbody>
+              </table>
+          </div>
+        </div>
+          
+         
+          <div class="d-flex justify-content-between alert alert-dark text-center h4 " role="alert">
+            <p>Total</p>
+            <p class="totalAmount"></p>
+          </div>
+
+          
+          <div class="card">
+            <form class="card-body" id="checkoutCart">
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <label for="country">Shipping Type </label>
+                    <select class="custom-select d-block w-100" id="shippingMethod" name="shippingMethod" required>
+                      <option value="">Select....</option>
+                      <option value="andreani">Andreani</option>
+                      <option value="cadet">Cadet</option>
+                      <option value="dhl">DHL</option>
+                      <option value="mail">Mail</option>
+                    </select>  
+                </div>
+
+                 <div class="col-md-6 mb-4">
+                   <label for="country">Pay </label>
+                    <select class="custom-select d-block w-100" id="paymentMethod" name="paymentMethod" required>
+                      <option value="">Select....</option>
+                      <option value="cash">Cash</option>
+                      <option value="credit">Credit Card</option>
+                      <option value="debit">Debit Card</option>
+                    </select>  
+                </div>
+                 </div>
+              </div>
+               <button type="submit" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+            </form>
+          </div>
+        </div>
+        
+      </section>
+</main>
+<script src="/javascripts/script.js"></script>
+<script src="/javascripts/cart.js"></script>
+
+</body>
+
+  <%- include('./partials/footer.ejs') %>
+
+</html>
