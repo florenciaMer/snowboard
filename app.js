@@ -75,7 +75,7 @@ const dbConfig ={
   port: process.env.DB_PORT || "3306",
   user: process.env.DB_USER || "root",
   password: process.env.DB_PASSWORD || "",
-  password: process.env.DB_NAME || "snowboard"
+  database: process.env.DB_NAME || "snowboard"
 }
 app.listen(PORT,()=>{
   console.log('El servidor 3000 se levanto 123🎈')
