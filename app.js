@@ -71,7 +71,7 @@ app.use(methodOverride('_method'));
 
 const PORT = process.env.PORT || 3000
 const dbConfig ={
-  host: process.env.DB_HOST || "0.0.0.0",
+  host: process.env.DB_HOST || "localhost",
   port: process.env.DB_PORT || "3306",
   user: process.env.DB_USER || "root",
   password: process.env.DB_PASSWORD || "",
@@ -81,7 +81,7 @@ app.listen(PORT,()=>{
   console.log('El servidor 3000 se levanto 123🎈')
 })
 
-
+app.use(conn(mysql, dbConfig, "single"))
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
