@@ -81,7 +81,7 @@ app.listen(PORT,()=>{
   console.log('El servidor 3000 se levanto 123🎈')
 })
 
-app.use(conn(mysql, dbConfig, "single"))
+app.use(connect(mysql, dbConfig, "single"))
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
