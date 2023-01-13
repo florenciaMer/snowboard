@@ -67,9 +67,13 @@ app.use(function(req, res, next) {
 });
 
 const methodOverride = require('method-override');
+const { connected } = require('process');
 app.use(methodOverride('_method'));
 
-const PORT = process.env.PORT || 3000
+/*const PORT = process.env.PORT || 3000
+app.listen(PORT,()=>{
+  console.log('El servidor 3000 se levanto 123🎈')
+})*/
 const dbConfig ={
   host: process.env.DB_HOST || "localhost",
   port: process.env.DB_PORT || "3306",
@@ -77,11 +81,8 @@ const dbConfig ={
   password: process.env.DB_PASSWORD || "",
   database: process.env.DB_NAME || "snowboard"
 }
-app.listen(PORT,()=>{
-  console.log('El servidor 3000 se levanto 123🎈')
-})
 
-app.use(connect(mysql, dbConfig, "single"))
+//app.use(this.connect(mysql, dbConfig, "single"))
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
